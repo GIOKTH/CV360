@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: ldb-cv360
+  profiles:
+    active: ${PROFILE_ACTIVE:dev}
+  logstash:
+    server: ${LOG_STASH_SERVER:10.0.1.99}
+    port: ${LOG_STASH_PORT:5045}
+  apps:
+    package: come.ldblao.cv360
+    logging:
+      level-info: INFO
+      level-debug: DEBUG
+      level-error: ERROR
+
+server:
+  port: ${LDB_CV360_PORT:9093}

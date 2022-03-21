@@ -1,0 +1,345 @@
+2022-03-20 13:49:30.334  WARN [ldb-cv360,,,] 95877 --- [main] io.fabric8.kubernetes.client.Config      : Error reading service account token from: [/var/run/secrets/kubernetes.io/serviceaccount/token]. Ignoring.
+2022-03-20 13:49:30.342  WARN [ldb-cv360,,,] 95877 --- [main] io.fabric8.kubernetes.client.Config      : Error reading service account token from: [/var/run/secrets/kubernetes.io/serviceaccount/token]. Ignoring.
+2022-03-20 13:49:30.349  WARN [ldb-cv360,,,] 95877 --- [main] o.s.c.k.KubernetesAutoConfiguration      : No namespace has been detected. Please specify KUBERNETES_NAMESPACE env var, or use a later kubernetes version (1.3 or later)
+2022-03-20 13:49:30.899  WARN [ldb-cv360,,,] 95877 --- [main] o.s.c.k.config.ConfigMapPropertySource   : Can't read configMap with name: [ldb-cv360] in namespace:[null]. Ignoring.
+
+io.fabric8.kubernetes.client.KubernetesClientException: Operation: [get]  for kind: [ConfigMap]  with name: [ldb-cv360]  in namespace: [null]  failed.
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:64)
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:72)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:229)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.get(BaseOperation.java:162)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.getData(ConfigMapPropertySource.java:94)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.<init>(ConfigMapPropertySource.java:76)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.getMapPropertySourceForSingleConfigMap(ConfigMapPropertySourceLocator.java:95)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.lambda$locate$0(ConfigMapPropertySourceLocator.java:78)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.locate(ConfigMapPropertySourceLocator.java:77)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:52)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:47)
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:97)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:626)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.ldblao.cv360.Cv360Application.main(Cv360Application.java:25)
+Caused by: java.net.UnknownHostException: kubernetes.default.svc: nodename nor servname provided, or not known
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1499)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:849)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1489)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1348)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1282)
+	at okhttp3.Dns.lambda$static$0(Dns.java:39)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:171)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.java:135)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.java:84)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.java:187)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.java:108)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.java:88)
+	at okhttp3.internal.connection.Transmitter.newExchange(Transmitter.java:169)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:41)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:94)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:88)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at io.fabric8.kubernetes.client.utils.BackwardsCompatibilityInterceptor.intercept(BackwardsCompatibilityInterceptor.java:119)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at io.fabric8.kubernetes.client.utils.ImpersonatorInterceptor.intercept(ImpersonatorInterceptor.java:68)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at io.fabric8.kubernetes.client.utils.HttpClientUtils.lambda$createHttpClient$3(HttpClientUtils.java:112)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:229)
+	at okhttp3.RealCall.execute(RealCall.java:81)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:404)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:365)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:330)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:311)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.handleGet(BaseOperation.java:810)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:218)
+	... 16 common frames omitted
+
+2022-03-20 13:49:30.905  INFO [ldb-cv360,,,] 95877 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configmap.ldb-cv360.null'}]
+2022-03-20 13:49:31.009  INFO [ldb-cv360,,,] 95877 --- [main] com.ldblao.cv360.Cv360Application        : The following profiles are active: dev
+2022-03-20 13:49:32.544  INFO [ldb-cv360,,,] 95877 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-20 13:49:32.636  INFO [ldb-cv360,,,] 95877 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78ms. Found 5 JPA repository interfaces.
+2022-03-20 13:49:33.211  WARN [ldb-cv360,,,] 95877 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2022-03-20 13:49:33.632  INFO [ldb-cv360,,,] 95877 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d0492fc5-18f7-3fd9-9cb0-eee3185619ff
+2022-03-20 13:49:34.396  INFO [ldb-cv360,,,] 95877 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9093 (http)
+2022-03-20 13:49:34.407  INFO [ldb-cv360,,,] 95877 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-20 13:49:34.408  INFO [ldb-cv360,,,] 95877 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-03-20 13:49:34.561  INFO [ldb-cv360,,,] 95877 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-20 13:49:34.562  INFO [ldb-cv360,,,] 95877 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3455 ms
+2022-03-20 13:49:34.731  WARN [ldb-cv360,,,] 95877 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2022-03-20 13:49:34.732  INFO [ldb-cv360,,,] 95877 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-03-20 13:49:34.740  INFO [ldb-cv360,,,] 95877 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@dae5e0
+2022-03-20 13:49:35.365  INFO [ldb-cv360,,,] 95877 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-20 13:49:35.415  INFO [ldb-cv360,,,] 95877 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2022-03-20 13:49:35.574  INFO [ldb-cv360,,,] 95877 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-03-20 13:49:35.681  WARN [ldb-cv360,,,] 95877 --- [main] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - maxLifetime is less than 30000ms, setting to default 1800000ms.
+2022-03-20 13:49:35.681  WARN [ldb-cv360,,,] 95877 --- [main] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2022-03-20 13:49:35.681  INFO [ldb-cv360,,,] 95877 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-20 13:49:35.872  INFO [ldb-cv360,,,] 95877 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@71eafb64
+2022-03-20 13:49:35.875  INFO [ldb-cv360,,,] 95877 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-20 13:49:35.894  INFO [ldb-cv360,,,] 95877 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-20 13:49:37.764  INFO [ldb-cv360,,,] 95877 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-20 13:49:37.778  INFO [ldb-cv360,,,] 95877 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-20 13:49:37.924  WARN [ldb-cv360,,,] 95877 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-20 13:49:38.633  INFO [ldb-cv360,,,] 95877 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: df8262a9-a44c-4a98-9629-6b340ceffbb3
+
+2022-03-20 13:49:38.752  INFO [ldb-cv360,,,] 95877 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1142843c, org.springframework.security.web.context.SecurityContextPersistenceFilter@54dc163a, org.springframework.security.web.header.HeaderWriterFilter@4eb69e8d, org.springframework.security.web.authentication.logout.LogoutFilter@2605433, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@19370af1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1cbb394b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3993cecb, org.springframework.security.web.session.SessionManagementFilter@2e41e0c, org.springframework.security.web.access.ExceptionTranslationFilter@2524f9bf, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3e3c6323]
+2022-03-20 13:49:38.868  WARN [ldb-cv360,,,] 95877 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2022-03-20 13:49:38.868  INFO [ldb-cv360,,,] 95877 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-03-20 13:49:39.089  INFO [ldb-cv360,,,] 95877 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-20 13:49:40.258  INFO [ldb-cv360,,,] 95877 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 20 endpoint(s) beneath base path '/actuator'
+2022-03-20 13:49:40.445  INFO [ldb-cv360,,,] 95877 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9093 (http) with context path ''
+2022-03-20 13:49:40.484  INFO [ldb-cv360,,,] 95877 --- [main] com.ldblao.cv360.Cv360Application        : Started Cv360Application in 12.875 seconds (JVM running for 16.301)
+2022-03-20 13:49:41.048  INFO [ldb-cv360,,,] 95877 --- [RMI TCP Connection(5)-192.168.43.37] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-20 13:49:41.049  INFO [ldb-cv360,,,] 95877 --- [RMI TCP Connection(5)-192.168.43.37] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-20 13:49:41.078  INFO [ldb-cv360,,,] 95877 --- [RMI TCP Connection(5)-192.168.43.37] o.s.web.servlet.DispatcherServlet        : Completed initialization in 28 ms
+2022-03-20 14:06:17.142  INFO [ldb-cv360,,,] 95877 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-03-20 14:06:17.150  INFO [ldb-cv360,,,] 95877 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-20 14:06:17.157  INFO [ldb-cv360,,,] 95877 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-20 14:06:17.171  INFO [ldb-cv360,,,] 95877 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-20 14:06:32.516  WARN [ldb-cv360,,,] 3668 --- [main] io.fabric8.kubernetes.client.Config      : Error reading service account token from: [/var/run/secrets/kubernetes.io/serviceaccount/token]. Ignoring.
+2022-03-20 14:06:32.521  WARN [ldb-cv360,,,] 3668 --- [main] io.fabric8.kubernetes.client.Config      : Error reading service account token from: [/var/run/secrets/kubernetes.io/serviceaccount/token]. Ignoring.
+2022-03-20 14:06:32.532  WARN [ldb-cv360,,,] 3668 --- [main] o.s.c.k.KubernetesAutoConfiguration      : No namespace has been detected. Please specify KUBERNETES_NAMESPACE env var, or use a later kubernetes version (1.3 or later)
+2022-03-20 14:06:32.961  WARN [ldb-cv360,,,] 3668 --- [main] o.s.c.k.config.ConfigMapPropertySource   : Can't read configMap with name: [ldb-cv360] in namespace:[null]. Ignoring.
+
+io.fabric8.kubernetes.client.KubernetesClientException: Operation: [get]  for kind: [ConfigMap]  with name: [ldb-cv360]  in namespace: [null]  failed.
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:64)
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:72)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:229)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.get(BaseOperation.java:162)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.getData(ConfigMapPropertySource.java:94)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.<init>(ConfigMapPropertySource.java:76)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.getMapPropertySourceForSingleConfigMap(ConfigMapPropertySourceLocator.java:95)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.lambda$locate$0(ConfigMapPropertySourceLocator.java:78)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.locate(ConfigMapPropertySourceLocator.java:77)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:52)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:47)
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:97)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:626)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.ldblao.cv360.Cv360Application.main(Cv360Application.java:25)
+Caused by: java.net.UnknownHostException: kubernetes.default.svc: nodename nor servname provided, or not known
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1499)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:849)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1489)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1348)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1282)
+	at okhttp3.Dns.lambda$static$0(Dns.java:39)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:171)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.java:135)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.java:84)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.java:187)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.java:108)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.java:88)
+	at okhttp3.internal.connection.Transmitter.newExchange(Transmitter.java:169)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:41)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:94)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:88)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at io.fabric8.kubernetes.client.utils.BackwardsCompatibilityInterceptor.intercept(BackwardsCompatibilityInterceptor.java:119)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at io.fabric8.kubernetes.client.utils.ImpersonatorInterceptor.intercept(ImpersonatorInterceptor.java:68)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at io.fabric8.kubernetes.client.utils.HttpClientUtils.lambda$createHttpClient$3(HttpClientUtils.java:112)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:229)
+	at okhttp3.RealCall.execute(RealCall.java:81)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:404)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:365)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:330)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:311)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.handleGet(BaseOperation.java:810)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:218)
+	... 16 common frames omitted
+
+2022-03-20 14:06:32.997  INFO [ldb-cv360,,,] 3668 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configmap.ldb-cv360.null'}]
+2022-03-20 14:06:33.057  INFO [ldb-cv360,,,] 3668 --- [main] com.ldblao.cv360.Cv360Application        : The following profiles are active: dev
+2022-03-20 14:06:37.826  INFO [ldb-cv360,,,] 3668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-20 14:06:38.235  INFO [ldb-cv360,,,] 3668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 392ms. Found 5 JPA repository interfaces.
+2022-03-20 14:06:40.150  WARN [ldb-cv360,,,] 3668 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2022-03-20 14:06:40.766  INFO [ldb-cv360,,,] 3668 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d0492fc5-18f7-3fd9-9cb0-eee3185619ff
+2022-03-20 14:06:43.005  INFO [ldb-cv360,,,] 3668 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9093 (http)
+2022-03-20 14:06:43.021  INFO [ldb-cv360,,,] 3668 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-20 14:06:43.022  INFO [ldb-cv360,,,] 3668 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-03-20 14:06:43.304  INFO [ldb-cv360,,,] 3668 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-20 14:06:43.305  INFO [ldb-cv360,,,] 3668 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 10203 ms
+2022-03-20 14:06:43.597  WARN [ldb-cv360,,,] 3668 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2022-03-20 14:06:43.598  INFO [ldb-cv360,,,] 3668 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-03-20 14:06:43.634  INFO [ldb-cv360,,,] 3668 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@344f9467
+2022-03-20 14:06:44.435  INFO [ldb-cv360,,,] 3668 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-20 14:06:44.495  INFO [ldb-cv360,,,] 3668 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2022-03-20 14:06:44.610  INFO [ldb-cv360,,,] 3668 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-03-20 14:06:44.706  WARN [ldb-cv360,,,] 3668 --- [main] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - maxLifetime is less than 30000ms, setting to default 1800000ms.
+2022-03-20 14:06:44.707  WARN [ldb-cv360,,,] 3668 --- [main] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2022-03-20 14:06:44.707  INFO [ldb-cv360,,,] 3668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-20 14:06:44.875  INFO [ldb-cv360,,,] 3668 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33c9f1ac
+2022-03-20 14:06:44.879  INFO [ldb-cv360,,,] 3668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-20 14:06:44.895  INFO [ldb-cv360,,,] 3668 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-20 14:06:46.799  INFO [ldb-cv360,,,] 3668 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-20 14:06:46.811  INFO [ldb-cv360,,,] 3668 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-20 14:06:46.971  WARN [ldb-cv360,,,] 3668 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-20 14:06:47.754  INFO [ldb-cv360,,,] 3668 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 4ab3f9c9-6e69-4c90-8d9b-7af899a75712
+
+2022-03-20 14:06:47.862  INFO [ldb-cv360,,,] 3668 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@453de9d0, org.springframework.security.web.context.SecurityContextPersistenceFilter@33602729, org.springframework.security.web.header.HeaderWriterFilter@365eaef, org.springframework.security.web.authentication.logout.LogoutFilter@5e2ab1c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7a458c73, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e3c6323, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e53f980, org.springframework.security.web.session.SessionManagementFilter@3e9e7a70, org.springframework.security.web.access.ExceptionTranslationFilter@59d6a4d1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2f154d9b]
+2022-03-20 14:06:47.969  WARN [ldb-cv360,,,] 3668 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2022-03-20 14:06:47.970  INFO [ldb-cv360,,,] 3668 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-03-20 14:06:48.219  INFO [ldb-cv360,,,] 3668 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-20 14:06:49.555  INFO [ldb-cv360,,,] 3668 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 20 endpoint(s) beneath base path '/actuator'
+2022-03-20 14:06:49.707  INFO [ldb-cv360,,,] 3668 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9093 (http) with context path ''
+2022-03-20 14:06:49.739  INFO [ldb-cv360,,,] 3668 --- [main] com.ldblao.cv360.Cv360Application        : Started Cv360Application in 20.117 seconds (JVM running for 21.812)
+2022-03-20 14:06:50.265  INFO [ldb-cv360,,,] 3668 --- [RMI TCP Connection(6)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-20 14:06:50.268  INFO [ldb-cv360,,,] 3668 --- [RMI TCP Connection(6)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-20 14:06:50.323  INFO [ldb-cv360,,,] 3668 --- [RMI TCP Connection(6)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 55 ms
+2022-03-20 14:23:15.874  INFO [ldb-cv360,,,] 3668 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-03-20 14:23:15.888  INFO [ldb-cv360,,,] 3668 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-20 14:23:15.897  INFO [ldb-cv360,,,] 3668 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-20 14:23:15.906  INFO [ldb-cv360,,,] 3668 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-03-20 14:23:28.016  WARN [ldb-cv360,,,] 8329 --- [main] io.fabric8.kubernetes.client.Config      : Error reading service account token from: [/var/run/secrets/kubernetes.io/serviceaccount/token]. Ignoring.
+2022-03-20 14:23:28.020  WARN [ldb-cv360,,,] 8329 --- [main] io.fabric8.kubernetes.client.Config      : Error reading service account token from: [/var/run/secrets/kubernetes.io/serviceaccount/token]. Ignoring.
+2022-03-20 14:23:28.022  WARN [ldb-cv360,,,] 8329 --- [main] o.s.c.k.KubernetesAutoConfiguration      : No namespace has been detected. Please specify KUBERNETES_NAMESPACE env var, or use a later kubernetes version (1.3 or later)
+2022-03-20 14:23:28.399  WARN [ldb-cv360,,,] 8329 --- [main] o.s.c.k.config.ConfigMapPropertySource   : Can't read configMap with name: [ldb-cv360] in namespace:[null]. Ignoring.
+
+io.fabric8.kubernetes.client.KubernetesClientException: Operation: [get]  for kind: [ConfigMap]  with name: [ldb-cv360]  in namespace: [null]  failed.
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:64)
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:72)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:229)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.get(BaseOperation.java:162)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.getData(ConfigMapPropertySource.java:94)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.<init>(ConfigMapPropertySource.java:76)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.getMapPropertySourceForSingleConfigMap(ConfigMapPropertySourceLocator.java:95)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.lambda$locate$0(ConfigMapPropertySourceLocator.java:78)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1507)
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.locate(ConfigMapPropertySourceLocator.java:77)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:52)
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:47)
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:97)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:626)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.ldblao.cv360.Cv360Application.main(Cv360Application.java:25)
+Caused by: java.net.UnknownHostException: kubernetes.default.svc: nodename nor servname provided, or not known
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1499)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:849)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1489)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1348)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1282)
+	at okhttp3.Dns.lambda$static$0(Dns.java:39)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:171)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.java:135)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.java:84)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.java:187)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.java:108)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.java:88)
+	at okhttp3.internal.connection.Transmitter.newExchange(Transmitter.java:169)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:41)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:94)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:88)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at io.fabric8.kubernetes.client.utils.BackwardsCompatibilityInterceptor.intercept(BackwardsCompatibilityInterceptor.java:119)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at io.fabric8.kubernetes.client.utils.ImpersonatorInterceptor.intercept(ImpersonatorInterceptor.java:68)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at io.fabric8.kubernetes.client.utils.HttpClientUtils.lambda$createHttpClient$3(HttpClientUtils.java:112)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:229)
+	at okhttp3.RealCall.execute(RealCall.java:81)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:404)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:365)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:330)
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:311)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.handleGet(BaseOperation.java:810)
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:218)
+	... 16 common frames omitted
+
+2022-03-20 14:23:28.405  INFO [ldb-cv360,,,] 8329 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configmap.ldb-cv360.null'}]
+2022-03-20 14:23:28.445  INFO [ldb-cv360,,,] 8329 --- [main] com.ldblao.cv360.Cv360Application        : The following profiles are active: dev
+2022-03-20 14:23:29.617  INFO [ldb-cv360,,,] 8329 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-20 14:23:29.712  INFO [ldb-cv360,,,] 8329 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73ms. Found 5 JPA repository interfaces.
+2022-03-20 14:23:30.219  WARN [ldb-cv360,,,] 8329 --- [main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2022-03-20 14:23:30.525  INFO [ldb-cv360,,,] 8329 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d0492fc5-18f7-3fd9-9cb0-eee3185619ff
+2022-03-20 14:23:31.394  INFO [ldb-cv360,,,] 8329 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9093 (http)
+2022-03-20 14:23:31.409  INFO [ldb-cv360,,,] 8329 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-20 14:23:31.410  INFO [ldb-cv360,,,] 8329 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-03-20 14:23:31.562  INFO [ldb-cv360,,,] 8329 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-20 14:23:31.562  INFO [ldb-cv360,,,] 8329 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3093 ms
+2022-03-20 14:23:31.746  WARN [ldb-cv360,,,] 8329 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2022-03-20 14:23:31.746  INFO [ldb-cv360,,,] 8329 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-03-20 14:23:31.757  INFO [ldb-cv360,,,] 8329 --- [main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@dae5e0
+2022-03-20 14:23:32.393  INFO [ldb-cv360,,,] 8329 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-20 14:23:32.457  INFO [ldb-cv360,,,] 8329 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.20.Final
+2022-03-20 14:23:32.630  INFO [ldb-cv360,,,] 8329 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-03-20 14:23:32.756  WARN [ldb-cv360,,,] 8329 --- [main] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - maxLifetime is less than 30000ms, setting to default 1800000ms.
+2022-03-20 14:23:32.756  WARN [ldb-cv360,,,] 8329 --- [main] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2022-03-20 14:23:32.757  INFO [ldb-cv360,,,] 8329 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-20 14:23:33.021  INFO [ldb-cv360,,,] 8329 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@71eafb64
+2022-03-20 14:23:33.025  INFO [ldb-cv360,,,] 8329 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-20 14:23:33.046  INFO [ldb-cv360,,,] 8329 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-03-20 14:23:34.919  INFO [ldb-cv360,,,] 8329 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-20 14:23:34.935  INFO [ldb-cv360,,,] 8329 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-20 14:23:35.086  WARN [ldb-cv360,,,] 8329 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-20 14:23:35.958  INFO [ldb-cv360,,,] 8329 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7adac328-6bfa-456f-b061-4f69b4b61ec5
+
+2022-03-20 14:23:36.142  INFO [ldb-cv360,,,] 8329 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@47d7e8b5, org.springframework.security.web.context.SecurityContextPersistenceFilter@7672dd7a, org.springframework.security.web.header.HeaderWriterFilter@5fc76532, org.springframework.security.web.authentication.logout.LogoutFilter@6dcb4f30, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7441edeb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@37d50217, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3ce71bbb, org.springframework.security.web.session.SessionManagementFilter@5bbb351e, org.springframework.security.web.access.ExceptionTranslationFilter@a94c8e3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@dc28d74]
+2022-03-20 14:23:36.277  WARN [ldb-cv360,,,] 8329 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2022-03-20 14:23:36.277  INFO [ldb-cv360,,,] 8329 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-03-20 14:23:36.542  INFO [ldb-cv360,,,] 8329 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-20 14:23:37.910  INFO [ldb-cv360,,,] 8329 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 20 endpoint(s) beneath base path '/actuator'
+2022-03-20 14:23:38.101  INFO [ldb-cv360,,,] 8329 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9093 (http) with context path ''
+2022-03-20 14:23:38.144  INFO [ldb-cv360,,,] 8329 --- [main] com.ldblao.cv360.Cv360Application        : Started Cv360Application in 11.725 seconds (JVM running for 13.443)
+2022-03-20 14:23:38.643  INFO [ldb-cv360,,,] 8329 --- [RMI TCP Connection(6)-192.168.43.37] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-20 14:23:38.644  INFO [ldb-cv360,,,] 8329 --- [RMI TCP Connection(6)-192.168.43.37] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-20 14:23:38.669  INFO [ldb-cv360,,,] 8329 --- [RMI TCP Connection(6)-192.168.43.37] o.s.web.servlet.DispatcherServlet        : Completed initialization in 24 ms
+2022-03-20 14:31:06.713  INFO [ldb-cv360,,,] 8329 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-03-20 14:31:06.720  INFO [ldb-cv360,,,] 8329 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-20 14:31:06.726  INFO [ldb-cv360,,,] 8329 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-20 14:31:06.735  INFO [ldb-cv360,,,] 8329 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!-- all config from resource -->
+    <springProperty scope="context" name="application_name" source="spring.application.name"/>
+    <springProperty scope="context" name="pod_name" source="spring.application.podName"/>
+    <springProperty scope="context" name="app_profile" source="spring.profiles.active"/>
+
+    <springProperty scope="context" name="log-package" source="spring.apps.package"/>
+    <springProperty scope="context" name="log-info" source="spring.apps.logging.level-info"/>
+    <springProperty scope="context" name="log-debug" source="spring.apps.logging.level-debug"/>
+    <springProperty scope="context" name="log-error" source="spring.apps.logging.level-error"/>
+
+    <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <property name="FILE_LOG_PATTERN" value="${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <property name="LOG_LOCATION" value="./logs" />
+    <property name="LOG_FILE" value="${pod_name}" />
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_LOCATION}/${LOG_FILE}.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_LOCATION}/${LOG_FILE}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <springProfile name="dev">
+        <root level="info">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="RollingFile" />
+        </root>
+        <logger name="${log-package:-la.ldblao.vbox}" level="trace" additivity="false">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="RollingFile" />
+        </logger>
+    </springProfile>
+
+    <springProfile name="mac">
+        <root level="info">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="RollingFile" />
+        </root>
+        <logger name="${log-package:-la.ldblao.vbox}" level="trace" additivity="false">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="RollingFile" />
+        </logger>
+    </springProfile>
+
+    <springProfile name="prod">
+        <root level="info">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="RollingFile" />
+        </root>
+        <logger name="${log-package:-la.ldblao.vbox}" level="trace" additivity="false">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="RollingFile" />
+        </logger>
+    </springProfile>
+
+</configuration>
